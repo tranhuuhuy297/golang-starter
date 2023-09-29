@@ -7,4 +7,6 @@ func main() {
 	fmt.Println(b)
 	b[0] = 4
 	fmt.Println(b)
+	b = append(b, 4)
+	fmt.Println(b)
 }
