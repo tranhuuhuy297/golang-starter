@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 // func sum(s []int, c chan int) {
 // 	sum := 0
@@ -43,10 +46,7 @@ func main() {
 		fmt.Println(<-myChan)
 	}()
 	fmt.Println(4)
-	myChan <- 1 // deadlock here vì: main goroutine gửi dữ liệu vào channel,
-	// nó phải đợi có goroutine nhận dữ liệu mới được đi tiếp -> main kẹt
-	go func() {
-		fmt.Println(<-myChan)
-	}()
+	myChan <- 1
 	fmt.Println(3)
+	time.Sleep(2) // sleep để main không end từ đoạn print 3
 }
